@@ -14,6 +14,8 @@ import { MongooseModule } from '@nestjs/mongoose';
         isGlobal:true,
     }),
     MongooseModule.forRoot(process.env.DB_URI),
+     
+    
 
     TaskModule],
   controllers: [AppController],

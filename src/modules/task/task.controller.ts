@@ -17,10 +17,7 @@ export class TaskController {
     return this.taskService.findAll();
   }
 
-  @Get('')
-  findOne(@Param('id') id: string) {
-    return this.taskService.findOne(+id);
-  }
+  
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
