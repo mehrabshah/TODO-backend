@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString, IsDate } from 'class-validator';
 
 export class CreateTaskDto {
-    @IsNotEmpty()
+  @IsNotEmpty()
   @IsString()
   name: string;
 
@@ -10,7 +10,5 @@ export class CreateTaskDto {
   status: string;
 
   @IsDate()
-  date: Date; 
- 
-
+  date: Date;
 }

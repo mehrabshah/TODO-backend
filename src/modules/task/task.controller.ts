@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -7,25 +15,38 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
-  @Post()
+  @Post('createTask')
   create(@Body() createTaskDto: CreateTaskDto) {
-    return this.taskService.create(createTaskDto);
+    try {
+      return this.taskService.create(createTaskDto);
+    } catch (error) {
+      return 'Failed to create a task';
+    }
   }
 
-  @Get("")
+  @Get('getAllTask')
   findAll() {
-    return this.taskService.findAll();
+    try {
+      return this.taskService.findAll();
+    } catch (error) {
+      return 'Failed to fetch tasks';
+    }
   }
-
-  
-
-  @Patch(':id')
+  @Patch('updateTask')
   update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.taskService.update(+id, updateTaskDto);
+    try {
+      return this.taskService.update(+id, updateTaskDto);
+    } catch (error) {
+      return 'Failed to update task';
+    }
   }
 
-  @Delete(':id')
+  @Delete('deleteTask')
   remove(@Param('id') id: string) {
-    return this.taskService.remove(+id);
+    try {
+      return this.taskService.remove(+id);
+    } catch (error) {
+      return 'Failed to delete task';
+    }
   }
 }
