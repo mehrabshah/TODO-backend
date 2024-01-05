@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -42,9 +43,11 @@ export class TaskController {
   }
 
   @Delete('deleteTask')
-  remove(@Param('id') id: string) {
+  remove(@Query('id') id: number) {
     try {
-      return this.taskService.remove(+id);
+     
+
+      return this.taskService.remove(id);
     } catch (error) {
       return 'Failed to delete task';
     }

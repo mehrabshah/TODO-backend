@@ -27,7 +27,9 @@ export class TaskService {
   }
 
   remove(id: number) {
+   
     const task=this.taskModel.findByIdAndDelete({_id:id}).exec();
+
     return task;
   }
 }
