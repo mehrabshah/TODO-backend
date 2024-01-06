@@ -21,7 +21,7 @@ export class TaskService {
 
   async update(id: string, updateTaskDto: UpdateTaskDto) {
     const existingTask = await this.taskModel.findById(id);
-    console.log(existingTask);
+    
 
     if (!existingTask) {
       throw new NotFoundException(`Task with ID ${id} not found`);
